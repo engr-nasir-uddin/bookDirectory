@@ -1,11 +1,18 @@
 from django.shortcuts import redirect, render
 from django.http import HttpResponse
 from .models import Booklist
+from django.db.models import Q
 
 # Create your views here.
 
 def index(request):
-    books=Booklist.objects.all()
+    if 'query' in request.GET:
+        query=request.GET['query']
+        # books=Booklist.objects.filter(title__icontains=query)
+        multiple_query=Q(Q(title__icontains=query) | Q(author__icontains=query) | Q(price__icontains=query))
+        books=Booklist.objects.filter(multiple_query)
+    else:   
+        books=Booklist.objects.all()
     return render(request, 'index.html', {'books': books})
 
 def add(request):

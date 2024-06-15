@@ -9,9 +9,24 @@
         <h2 class="text-center">Book List</h2>
     <hr>
 
-    <div class="mb-3">
-        <a class="btn btn-success" href="add/" role="button">Add Book</a>
+<div class="container">
+    <div class="row">
+        <div class="col-md-6">
+                <a class="btn btn-success" href="/" role="button">Home</a>
+
+
+                <a class="btn btn-success" href="add/" role="button">Add Book</a>
+        </div>
+        <div class="col-md-6">
+            <div class="container-fluid">
+                <form class="d-flex" role="search">
+                  <input class="form-control me-2" name="query" type="search" placeholder="Search" aria-label="Search">
+                  <button class="btn btn-outline-success" type="submit">Search</button>
+                </form>
+        </div>
     </div>
+</div>
+<br>
 <!-- CRUD table starts here -->
  <table class="table table-bordered table-secondary table-striped table-hover">
     <thead>
