@@ -1,0 +1,36 @@
+{% extends 'master.html' %}
+
+{% block title %}
+<title>Add Books</title> 
+{% endblock %}
+
+{% block content %}
+<div class="container">
+        <h2 class="text-center">Add Books</h2>
+</div>
+    <hr>
+<div class="container">
+    <form action="/insert" method="POST">
+
+        {% csrf_token %}
+
+        <div class="mb-3">
+            <label for="title" class="form-label">Book Title</label>
+            <input type="text" class="form-control" name="title" id="title" placeholder="Enter Book Title">
+        </div>
+        <div class="mb-3">
+            <label for="author" class="form-label">Author Name</label>
+            <input type="text" class="form-control" name="author" id="author" placeholder="Enter Author Name">
+        </div>
+        <div class="mb-3">
+            <label for="price" class="form-label">Price</label>
+            <input type="text" class="form-control" name="price" id="price" placeholder="Enter Price">
+        </div>
+        <div class="mb-3">
+            <button type="submit" class="btn btn-info" value="insert">Submit</button>
+        </div>
+    </form>
+
+</div>
+
+{% endblock %}

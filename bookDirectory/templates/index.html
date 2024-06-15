@@ -1,0 +1,44 @@
+{% extends 'master.html' %}
+
+{% block title %}
+<title>Home</title> 
+{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <h2 class="text-center">Book List</h2>
+    <hr>
+
+    <div class="mb-3">
+        <a class="btn btn-success" href="add/" role="button">Add Book</a>
+    </div>
+<!-- CRUD table starts here -->
+ <table class="table table-bordered table-secondary table-striped table-hover">
+    <thead>
+        <tr class="text-center">
+            <th>Sl</th>
+            <th>Title</th>
+            <th>Author</th>
+            <th>Price</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+{% for book in books %}
+    <tr>
+        <td class="text-center">{{book.id}}</td>
+        <td>{{book.title}}</td>
+        <td>{{book.author}}</td>
+        <td class="text-center">{{book.price}}</td>
+        <td class="text-center">
+            <a class="btn btn-info" href="/edit/{{ book.id }}">Edit</a>
+            <a class="btn btn-danger" href="/delete/{{ book.id }}">Delete</a>
+        </td>
+    </tr>
+
+{% endfor %}
+ </table>
+
+    
+
+    </div>
+{% endblock %}
