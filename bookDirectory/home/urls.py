@@ -19,7 +19,9 @@ from django.urls import path
 from . import views
 
 urlpatterns = [
-    path('',views.index, name='index'),
+    path('',views.user_login, name='user_login'),
+    # path('user_login',views.user_login, name='user_login'),
+    path('index/',views.index, name='index'),
     path('add/',views.add, name='add'),
     path('insert',views.insert, name='insert'),
     path('edit/<id>/',views.edit, name='edit'),

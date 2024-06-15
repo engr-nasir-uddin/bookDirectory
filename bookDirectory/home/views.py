@@ -2,8 +2,26 @@ from django.shortcuts import redirect, render
 from django.http import HttpResponse
 from .models import Booklist
 from django.db.models import Q
+from django.contrib.auth import authenticate, login
 
 # Create your views here.
+
+# def login(request):
+#     return render(request, 'login.html')
+
+def user_login(request):
+    if request.method=='POST':
+        username=request.POST.get('username')
+        password=request.POST.get('password')
+
+        user= authenticate(request, username=username, password=password)
+
+        if user is not None:
+            login(request, user)
+            return redirect('index')
+        else:
+            return render(request, 'login.html', {'error_message': 'Invalid Credentials'})
+    return render(request, 'login.html')
 
 def index(request):
     if 'query' in request.GET:
